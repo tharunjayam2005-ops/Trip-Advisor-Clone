@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanderlust — Discover the World</title>
+
+  <!-- Google Fonts: Playfair Display (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Logo (left-aligned) -->
+      <a href="#" class="site-logo" aria-label="Wanderlust — Home">
+        <div class="logo-icon" aria-hidden="true">✈</div>
+        <span class="logo-text">Wanderlust</span>
+      </a>
+
+      <!-- Centered search placeholder in header -->
+      <div class="header-search">
+        <label for="header-search-input" class="visually-hidden">
+          Quick search destinations
+        </label>
+        <input
+          type="search"
+          id="header-search-input"
+          placeholder="🔍  Search destinations, hotels, restaurants…"
+          aria-label="Quick search"
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Right-aligned navigation -->
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul role="list">
+          <li>
+            <a href="#hotelss" class="active" aria-current="page">🏨 Hotels</a>
+          </li>
+          <li>
+            <a href="#flights">✈ Flights</a>
+          </li>
+          <li>
+            <a href="#restaurantss">🍽 Restaurants</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SEARCH & FILTER SECTION
+       ============================================================ -->
+  <section class="search-section" aria-labelledby="search-heading" id="search">
+    <div class="search-inner">
+      <h2 id="search-heading">
+        Find your next <span>adventure</span>
+      </h2>
+
+      <!-- Destination search bar -->
+      <div class="search-bar" role="search">
+        <label for="destination-input" class="visually-hidden">City or destination</label>
+        <input
+          type="text"
+          id="destination-input"
+          placeholder="Enter a city or destination (e.g. Paris, Bali, New York)"
+          aria-label="City or destination"
+          autocomplete="off"
+        />
+        <button class="btn-search" id="search-btn" aria-label="Search">
+          Search
+        </button>
+      </div>
+
+      <!-- Filter controls -->
+      <div class="filter-row" role="group" aria-label="Filter results">
+
+        <!-- Price range filter -->
+        <div class="filter-group">
+          <label for="price-range">
+            Max price per night
+          </label>
+          <input
+            type="range"
+            id="price-range"
+            min="50"
+            max="500"
+            step="10"
+            value="500"
+            aria-valuemin="50"
+            aria-valuemax="500"
+            aria-valuenow="500"
+            aria-label="Maximum price per night"
+          />
+          <span class="filter-value" id="price-display" aria-live="polite">
+            Up to $500/night
+          </span>
+        </div>
+
+        <!-- Minimum rating filter -->
+        <div class="filter-group">
+          <label for="rating-filter">Minimum rating</label>
+          <select id="rating-filter" aria-label="Minimum star rating">
+            <option value="0">Any rating</option>
+            <option value="3">3+ stars</option>
+            <option value="4">4+ stars</option>
+            <option value="4.5">4.5+ stars</option>
+          </select>
+        </div>
+
+        <!-- Category filter -->
+        <div class="filter-group">
+          <label for="category-filter">Category</label>
+          <select id="category-filter" aria-label="Category type">
+            <option value="all">All categories</option>
+            <option value="destination">Destinations</option>
+            <option value="hotel">Hotels</option>
+            <option value="restaurant">Restaurants</option>
+          </select>
+        </div>
+
+      </div><!-- /filter-row -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- ── Featured Destinations ── -->
+    <section
+      class="content-section"
+      id="featured"
+      aria-labelledby="featured-heading"
+    >
+      <div class="section-header">
+        <h2 id="featured-heading">Featured Destinations</h2>
+        <a href="#" class="see-all" aria-label="See all featured destinations">See all →</a>
+      </div>
+
+      <!--
+        CARD GRID: grid-template-columns adapts via media queries.
+        Each card has: image (with alt), badge, title, rating, description, meta.
+        data-* attributes are used by the JS filter.
+      -->
+      <div class="card-grid" id="destinations-grid" aria-label="Featured destinations">
+
+        <!-- Card 1 -->
+        <article
+          class="card visible"
+          data-category="destination"
+          data-rating="4.8"
+          data-price="120"
+          data-name="Santorini, Greece"
+        >
+          <div class="card-img-wrap">
+            <!--
+              Using Unsplash source for demo images.
+              Replace with local images or CDN for production.
+            -->
+            <img src="./image/c1.jpg" alt="Santorini, Greece">
+            <span class="card-badge" aria-label="Category: Trending">Trending</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Santorini, Greece</h3>
+            <div class="card-rating" aria-label="Rating: 4.8 out of 5 stars, 2,340 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="rating-value">4.8</span>
+              <span class="rating-count">(2,340 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Iconic volcanic island with whitewashed cliffside villages, world-class
+              sunsets over the caldera, and excellent local wine.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">From $400000 <span>/ night</span></span>
+              <span class="card-tag">Island</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article
+          class="card visible"
+          data-category="destination"
+          data-rating="4.7"
+          data-price="95"
+          data-name="Kyoto, Japan"
+        >
+          <div class="card-img-wrap">
+            <img src="./image/c2.jpg" alt="Kyoto, Japan">
+            <span class="card-badge">Top Pick</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Kyoto, Japan</h3>
+            <div class="card-rating" aria-label="Rating: 4.7 out of 5 stars, 4,812 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span>
+                <span class="star-empty">★</span>
+              </div>
+              <span class="rating-value">4.7</span>
+              <span class="rating-count">(4,812 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Ancient temples, bamboo forests, and geisha districts steeped in
+              centuries of Japanese culture and seasonal beauty.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">From $200000 <span>/ night</span></span>
+              <span class="card-tag">Cultural</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article
+          class="card visible"
+          data-category="destination"
+          data-rating="4.6"
+          data-price="150"
+          data-name="Amalfi Coast, Italy"
+        >
+          <div class="card-img-wrap">
+            <img src="./image/c3.jpg" alt="Amalfi Coast, Italy">
+            <span class="card-badge">Scenic</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Amalfi Coast, Italy</h3>
+            <div class="card-rating" aria-label="Rating: 4.6 out of 5 stars, 3,105 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span>
+                <span class="star-empty">★</span>
+              </div>
+              <span class="rating-value">4.6</span>
+              <span class="rating-count">(3,105 reviews)</span>
+            </div>
+            <p class="card-desc">
+              A UNESCO-listed coastline of lemon groves, hidden coves, and
+              pastel villages perched dramatically above sapphire waters.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">From $50000 <span>/ night</span></span>
+              <span class="card-tag">Coastal</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /card-grid #destinations -->
+    </section>
+
+    <!-- ── Popular Hotels ── -->
+    <section
+      class="content-section"
+      id="hotels"
+      aria-labelledby="hotels-heading"
+    >
+      <div class="section-header">
+        <h2 id="hotels-heading">Popular Hotels</h2>
+        <a href="#" class="see-all" aria-label="See all popular hotels">See all →</a>
+      </div>
+
+      <div class="card-grid" id="hotels-grid" aria-label="Popular hotels">
+
+        <!-- Hotel Card 1 -->
+        <article
+          class="card visible"
+          data-category="hotel"
+          data-rating="4.9"
+          data-price="280"
+          data-name="The Azure Palace"
+        >
+          <div class="card-img-wrap">
+            <img src="./image/c4.jpg" alt="The Azure Palace">
+            <span class="card-badge">Luxury</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">The Azure Palace</h3>
+            <div class="card-rating" aria-label="Rating: 4.9 out of 5 stars, 987 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="rating-value">4.9</span>
+              <span class="rating-count">(987 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Five-star beachfront sanctuary with overwater bungalows, a spa,
+              and Michelin-trained cuisine in Bali.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">$1,00,000 <span>/ night</span></span>
+              <span class="card-tag">⭐ 5-star</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hotel Card 2 -->
+        <article
+          class="card visible"
+          data-category="hotel"
+          data-rating="4.5"
+          data-price="160"
+          data-name="Montmartre Boutique"
+        >
+          <div class="card-img-wrap">
+           <img src="./image/c5.jpg" alt="Montmartre Boutique">
+            <span class="card-badge">Boutique</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Montmartre Boutique</h3>
+            <div class="card-rating" aria-label="Rating: 4.5 out of 5 stars, 1,432 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span>
+                <span class="star-empty">★</span>
+              </div>
+              <span class="rating-value">4.5</span>
+              <span class="rating-count">(1,432 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Charming 19th-century mansion steps from Sacré-Cœur, blending
+              Parisian elegance with contemporary comfort and rooftop views.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">$50000 <span>/ night</span></span>
+              <span class="card-tag">⭐ 4-star</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hotel Card 3 -->
+        <article
+          class="card visible"
+          data-category="hotel"
+          data-rating="4.3"
+          data-price="85"
+          data-name="The Trellis Inn"
+        >
+          <div class="card-img-wrap">
+           <img src="./image/c6.jpg" alt="The Trellis Inn">
+            <span class="card-badge">Best Value</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">The Trellis Inn</h3>
+            <div class="card-rating" aria-label="Rating: 4.3 out of 5 stars, 2,887 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span>
+                <span class="star-empty">★</span>
+              </div>
+              <span class="rating-value">4.3</span>
+              <span class="rating-count">(2,887 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Cheerful mountain retreat with garden terraces, homemade breakfasts,
+              and direct access to hiking trails in the Swiss Alps.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">$85000 <span>/ night</span></span>
+              <span class="card-tag">⭐ 3-star</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /card-grid #hotels -->
+    </section>
+
+    <!-- ── Top-rated Restaurants ── -->
+    <section
+      class="content-section"
+      id="restaurants"
+      aria-labelledby="restaurants-heading"
+    >
+      <div class="section-header">
+        <h2 id="restaurants-heading">Top-rated Restaurants</h2>
+        <a href="#" class="see-all" aria-label="See all top-rated restaurants">See all →</a>
+      </div>
+
+      <div class="card-grid" id="restaurants-grid" aria-label="Top-rated restaurants">
+
+        <!-- Restaurant Card 1 -->
+        <article
+          class="card visible"
+          data-category="restaurant"
+          data-rating="4.9"
+          data-price="80"
+          data-name="Marea Blu"
+        >
+          <div class="card-img-wrap">
+           <img src="./image/c7.jpg" alt="Marea Blu">
+            <span class="card-badge">Michelin ★</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Marea Blu</h3>
+            <div class="card-rating" aria-label="Rating: 4.9 out of 5 stars, 756 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="rating-value">4.9</span>
+              <span class="rating-count">(756 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Michelin-starred coastal Italian with daily-caught seafood,
+              hand-rolled pasta, and views across the Mediterranean.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">~$80000 <span>/ person</span></span>
+              <span class="card-tag">Italian</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Restaurant Card 2 -->
+        <article
+          class="card visible"
+          data-category="restaurant"
+          data-rating="4.7"
+          data-price="35"
+          data-name="Spice Garden Bangkok"
+        >
+          <div class="card-img-wrap">
+           <img src="./image/c8.jpg" alt="Spice Garden Bangkok">
+            <span class="card-badge">Local Fave</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Spice Garden Bangkok</h3>
+            <div class="card-rating" aria-label="Rating: 4.7 out of 5 stars, 3,210 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span>
+                <span class="star-empty">★</span>
+              </div>
+              <span class="rating-value">4.5</span>
+              <span class="rating-count">(3,210 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Beloved open-air eatery in Silom renowned for ferociously spiced
+              curries, pad Thai, and tropical desserts.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">~$75000 <span>/ person</span></span>
+              <span class="card-tag">Thai</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Restaurant Card 3 -->
+        <article
+          class="card visible"
+          data-category="restaurant"
+          data-rating="4.6"
+          data-price="55"
+          data-name="Casa Fuego, Mexico City"
+        >
+          <div class="card-img-wrap">
+           <img src="./image/c9.jpg" alt="Casa Fuego, Mexico City">
+            <span class="card-badge">Editor's Pick</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Casa Fuego, Mexico City</h3>
+            <div class="card-rating" aria-label="Rating: 4.6 out of 5 stars, 1,098 reviews">
+              <div class="stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span>
+                <span class="star-empty">★</span>
+              </div>
+              <span class="rating-value">3.8</span>
+              <span class="rating-count">(1,098 reviews)</span>
+            </div>
+            <p class="card-desc">
+              Live-fire taqueria celebrating traditional Oaxacan flavours —
+              tlayudas, mole negro, and mezcal cocktails in a vibrant courtyard.
+            </p>
+            <div class="card-meta">
+              <span class="card-price">~$55000 <span>/ person</span></span>
+              <span class="card-tag">Mexican</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /card-grid #restaurants -->
+
+      <!-- Shown when filter returns no results -->
+      <p class="no-results" id="no-results" role="status" aria-live="polite">
+        No results match your filters. Try adjusting your search.
+      </p>
+
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer role="contentinfo">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#about">About Us</a>
+      <a href="#advertise">Advertise</a>
+      <a href="#press">Press Centre</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#help">Help Centre</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#cookie">Cookie Preferences</a>
+      <a href="#access">Accessibility</a>
+    </nav>
+    <p>© 2025 Wanderlust Travel, Inc. All rights reserved. Demonstration only.</p>
+  </footer>
+</body>
+</html>
